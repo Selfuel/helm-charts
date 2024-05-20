@@ -29,30 +29,18 @@ executor:
     port: 80
   secret:
     name: executor-secret
-    # Basic Auth Username
-    USERNAME: ""
-    # Basic Auth Password
-    PASSWORD: ""
     ENV: "production"
     # Hostname of the runners. 
     RUNNER_HOST: ""
-    # Database connection details
-    DATABASE_HOST: ""
-    DATABASE_PORT: ""
-    DATABASE_NAME: ""
-    DATABASE_USERNAME: ""
-    DATABASE_PASSWORD: ""
     # Prometheus client address
     PROMETHEUS_CLIENT_ADDRESS: ""
-    # Slack Webhook URL, used for alerting to slack. Do not edit this value.
-    SLACK_HOOK: "https://hooks.slack.com/services/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"
   clusterRole:
     name: executor
   clusterRoleBinding:
     name: executor
 
 certManager:
-  enabled: false
+  enabled: true
   name: letsencrypt-cluster-issuer
   server: https://acme-v02.api.letsencrypt.org/directory
   email: ""
@@ -72,7 +60,6 @@ runnerHealthchecker:
     ENV: "production"
     RUNNER_HEALTHCHECKER_USERNAME: ""
     RUNNER_HEALTHCHECKER_PASSWORD: ""
-    RUNNER_HEALTHCHECKER_HOST: ""
   ingress:
     enabled: false
     host: ""

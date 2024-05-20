@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-executor-deployment"
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:
@@ -58,41 +59,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.executor.secret.name }}
                   key: RUNNER_HOST
-            - name: DATABASE_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: DATABASE_HOST
-            - name: DATABASE_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: DATABASE_PORT
-            - name: DATABASE_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: DATABASE_NAME
-            - name: DATABASE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: DATABASE_USERNAME
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: DATABASE_PASSWORD
             - name: PROMETHEUS_CLIENT_ADDRESS
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.executor.secret.name }}
                   key: PROMETHEUS_CLIENT_ADDRESS
-            - name: SLACK_HOOK
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.executor.secret.name }}
-                  key: SLACK_HOOK
             - name: APP_NAME
               valueFrom:
                 secretKeyRef:
