@@ -9,7 +9,7 @@ arx:
 # ID of your organization. 
 # Example: o_3b2fe2b2-3966-4ba0-88ee-8d5c4840a0a2
 organization:
-  id: "o_91993764-5124-4295-85c1-e75489319acc"
+  id: ""
 
 executor:
   app: executor
