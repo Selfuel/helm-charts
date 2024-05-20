@@ -1,6 +1,4 @@
-# Cortex Helm Chart
-
-This is the Helm chart for the Cortex project.
+This is the Helm chart for the Cortex product of Selfuel Cloud.
 
 ## Prerequisites
 

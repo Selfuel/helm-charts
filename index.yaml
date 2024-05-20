@@ -3,12 +3,12 @@ entries:
   cortex:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-05-20T23:43:17.6813716+03:00"
+    created: "2024-05-21T00:16:20.3963177+03:00"
     description: Helm Chart for Cortex product.
-    digest: a665058be04ccbe596ed1548d54f89729b4cb0caa65b9b6bf7e7777c1840c0ee
+    digest: 62db73f53552cf3a49020f77ccba8cc9edea7bd824da02ae343642e160e2a8b4
     name: cortex
     type: application
     urls:
     - https://selfuel.github.io/helm-charts/cortex-1.0.0.tgz
     version: 1.0.0
-generated: "2024-05-20T23:43:17.6813716+03:00"
+generated: "2024-05-21T00:16:20.3952674+03:00"
