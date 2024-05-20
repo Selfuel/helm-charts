@@ -2,6 +2,15 @@ replicaCount: 1
 
 namespace: selfuel
 
+# Arx URL, main api for the services to communicate with. Do not edit this value.
+arx:
+  url: https://api.selfuel.digital
+
+# ID of your organization. 
+# Example: o_3b2fe2b2-3966-4ba0-88ee-8d5c4840a0a2
+organization:
+  id: "o_91993764-5124-4295-85c1-e75489319acc"
+
 executor:
   app: executor
   replicaCount: 1
@@ -20,22 +29,23 @@ executor:
     port: 80
   secret:
     name: executor-secret
-    USERNAME: "admin"
-    PASSWORD: "admin"
-    ENV: "dev"
-    APP_HOST: "http://localhost:3000"
-    ARX_URL: "http://localhost:3000"
-    RUNNER_HEALTHCHECKER_USERNAME: "admin"
-    RUNNER_HEALTHCHECKER_PASSWORD: "admin"
-    RUNNER_HOST: "http://localhost:3000"
-    DATABASE_HOST: "localhost"
-    DATABASE_PORT: "5432"
-    DATABASE_NAME: "cortex"
-    DATABASE_USERNAME: "admin"
-    DATABASE_PASSWORD: "admin"
-    PROMETHEUS_CLIENT_ADDRESS: "http://localhost:9090"
-    SLACK_HOOK: "http://localhost:3000"
-    APP_NAME: "cortex"
+    # Basic Auth Username
+    USERNAME: ""
+    # Basic Auth Password
+    PASSWORD: ""
+    ENV: "production"
+    # Hostname of the runners. 
+    RUNNER_HOST: ""
+    # Database connection details
+    DATABASE_HOST: ""
+    DATABASE_PORT: ""
+    DATABASE_NAME: ""
+    DATABASE_USERNAME: ""
+    DATABASE_PASSWORD: ""
+    # Prometheus client address
+    PROMETHEUS_CLIENT_ADDRESS: ""
+    # Slack Webhook URL, used for alerting to slack. Do not edit this value.
+    SLACK_HOOK: "https://hooks.slack.com/services/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"
   clusterRole:
     name: executor
   clusterRoleBinding:
@@ -59,12 +69,10 @@ runnerHealthchecker:
   port: 80
   secret:
     name: runner-healthchecker-secret
-    ENV: "dev"
-    RUNNER_HEALTHCHECKER_USERNAME: "admin"
-    RUNNER_HEALTHCHECKER_PASSWORD: "admin"
-    RUNNER_HEALTHCHECKER_NAME: "runner-healthchecker"
-    RUNNER_HEALTHCHECKER_HOST: "http://localhost:3000"
-    RUNNER_HEALTHCHECKER_ARX_URL: "http://localhost:3000"
+    ENV: "production"
+    RUNNER_HEALTHCHECKER_USERNAME: ""
+    RUNNER_HEALTHCHECKER_PASSWORD: ""
+    RUNNER_HEALTHCHECKER_HOST: ""
   ingress:
     enabled: false
     host: ""
