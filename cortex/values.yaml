@@ -1,0 +1,77 @@
+replicaCount: 1
+
+namespace: selfuel
+
+executor:
+  app: executor
+  replicaCount: 1
+  repository: selfuelhub/executor
+  pullPolicy: IfNotPresent
+  tag: "latest"
+  port: 80
+  service:
+    name: executor-service
+    type: NodePort
+    port: 80
+    targetPort: 80
+  ingress:
+    host: ""
+    path: "/"
+    port: 80
+  secret:
+    name: executor-secret
+    USERNAME: "admin"
+    PASSWORD: "admin"
+    ENV: "dev"
+    APP_HOST: "http://localhost:3000"
+    ARX_URL: "http://localhost:3000"
+    RUNNER_HEALTHCHECKER_USERNAME: "admin"
+    RUNNER_HEALTHCHECKER_PASSWORD: "admin"
+    RUNNER_HOST: "http://localhost:3000"
+    DATABASE_HOST: "localhost"
+    DATABASE_PORT: "5432"
+    DATABASE_NAME: "cortex"
+    DATABASE_USERNAME: "admin"
+    DATABASE_PASSWORD: "admin"
+    PROMETHEUS_CLIENT_ADDRESS: "http://localhost:9090"
+    SLACK_HOOK: "http://localhost:3000"
+    APP_NAME: "cortex"
+  clusterRole:
+    name: executor
+  clusterRoleBinding:
+    name: executor
+
+certManager:
+  enabled: false
+  name: letsencrypt-cluster-issuer
+  server: https://acme-v02.api.letsencrypt.org/directory
+  email: ""
+  privateKeySecretRef:
+    name: letsencrypt-cluster-issuer-key
+
+runnerHealthchecker:
+  app: runner-healthchecker
+  replicaCount: 1
+  repository: selfuelhub/runner_healthchecker
+  version: "latest"
+  pullPolicy: IfNotPresent
+  tag: "latest"
+  port: 80
+  secret:
+    name: runner-healthchecker-secret
+    ENV: "dev"
+    RUNNER_HEALTHCHECKER_USERNAME: "admin"
+    RUNNER_HEALTHCHECKER_PASSWORD: "admin"
+    RUNNER_HEALTHCHECKER_NAME: "runner-healthchecker"
+    RUNNER_HEALTHCHECKER_HOST: "http://localhost:3000"
+    RUNNER_HEALTHCHECKER_ARX_URL: "http://localhost:3000"
+  ingress:
+    enabled: false
+    host: ""
+    path: "/"
+    port: 80
+  service:
+    name: runner-healthchecker-service
+    type: NodePort
+    port: 80
+    targetPort: 80
