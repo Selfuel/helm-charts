@@ -40,7 +40,6 @@ executor:
     name: executor
 
 certManager:
-  enabled: true
   name: letsencrypt-cluster-issuer
   server: https://acme-v02.api.letsencrypt.org/directory
   email: ""
@@ -61,7 +60,6 @@ runnerHealthchecker:
     RUNNER_HEALTHCHECKER_USERNAME: ""
     RUNNER_HEALTHCHECKER_PASSWORD: ""
   ingress:
-    enabled: false
     host: ""
     path: "/"
     port: 80
